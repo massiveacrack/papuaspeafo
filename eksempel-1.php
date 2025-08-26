@@ -4,7 +4,7 @@
 /*    Programmet skriver ut en "god dag"-melding med personens navn 
 */
   $fornavn=$_POST ["fornavn"];
-  $etternavn=$_POST ["etternavn"];  
+  $etternavn=$_POS ["etternavn"];  
 	
   print ("God dag $fornavn $etternavn <br />");  
 ?>
