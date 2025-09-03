@@ -9,7 +9,7 @@
   $sum=$tall1 + $tall2;   /* beregning av summen utf�rt  */
   $differanse=$tall1 - $tall2;  /* beregning av differansen utf�rt  */
 			
-  print ("cwelowate liczby to: <br />");
+  print ("cwelowate liczby to cos w stylu: <br />");
   print ("Tall 1 er $tall1 <br />");
   print ("Tall 2 er $tall2 <br />");
   print ("<br />");
