@@ -8,7 +8,7 @@
 
   print ("tall 1 er $tall1 <br />");
   print ("tall 2 er $tall2 <br />");
-  print (<br />);
+  print ("<br />");
   print ("summen er $summen <br />");
   print ("differansen er $differansen <br />");
   print ("produktet er $produkt <br />");
