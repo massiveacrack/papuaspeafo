@@ -1,5 +1,5 @@
 <?php
-  $svar=$_POST ["svar" ];
+  $svar=$_POST ["svar"];
     if ($svar=="9") {
         print ("Riktig svar! <br />");
     }
