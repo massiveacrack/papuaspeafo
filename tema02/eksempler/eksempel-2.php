@@ -1,7 +1,7 @@
 <?php
     $svar=$_POST ["svar"];
-        if (!$svar=="") {
-            print ("Du har ikke svart, vennligst prøv ijgen! <br />");
+        if ($svar=="") {
+            print ("Du har ikke svart, vennligst prøv igjgen! <br />");
         }
         else if ($svar=="j") {
             print("Du har svart ja, på spørsmålet om du er student");
