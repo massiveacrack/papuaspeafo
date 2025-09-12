@@ -6,9 +6,9 @@
         if ($svar=="n"); {
             print ("du har svart nei, på spørsmålet om du er student");
         }
-        else {
+        else {$svar!=""
             print ("du har ikke svart på spørsmålet om du er student")
         }
 
-        
+
     ?>
