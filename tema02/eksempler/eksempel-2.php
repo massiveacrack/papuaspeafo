@@ -9,7 +9,7 @@
         else if ($svar=="n"); {
             print("Du har svart nei, på spørsmålet om du er student");
         }
-        else { ($svar==""=);
+        else ($svar==""=); {
             print("Ugyldig svar, vennligst svar med j eller n");
         }
 ?>
