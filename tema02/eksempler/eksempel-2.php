@@ -9,4 +9,6 @@
         else {
             print ("du har ikke svart på spørsmålet om du er student")
         }
+
+        
     ?>
