@@ -1,7 +1,8 @@
 <?php
     $tall1=$_POST ["tall1"];
     $tall2=$_POST ["tall2"];
-    $operasjon=$_POST ["operasjon"];
+    $operasjon=$_POST ["operation"];
+
         if ($operasjon=="1") {
             $svar=$tall1+$tall2;
         
