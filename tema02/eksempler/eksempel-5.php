@@ -6,6 +6,9 @@
     print ("Tall 1 er $tall1 og Tall 2 er $tall2 <br />");
     
         if ($operasjon=="1") {
+            $svar=$tall1+$tall2;
+        
+            print ("$tall1 + $tall2 = $svar <br />");
             print ("Valgt operasjon er addisjon <br />");
         }
 
@@ -18,7 +21,7 @@
         else if ($operasjon=="4"){
             print ("Valgt operasjon er divisjon <br />");
         }
-        
+
         else if ($operasjon=="1") {
             $svar=$tall1+$tall2;
         
