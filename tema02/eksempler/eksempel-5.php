@@ -12,7 +12,13 @@
         else if ($operasjon=="2"){
             print ("Valgt operasjon er subtraksjon <br />");
         }
-
+        else if ($operasjon=="3"){
+            print ("Valgt operasjon er multiplikasjon <br />");
+        }
+        else if ($operasjon=="4"){
+            print ("Valgt operasjon er divisjon <br />");
+        }
+        
         else if ($operasjon=="1") {
             $svar=$tall1+$tall2;
         
