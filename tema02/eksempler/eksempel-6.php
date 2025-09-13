@@ -8,15 +8,21 @@
         }
 
         else if ($tall1 > $tall2) {
-            print ("$tall1 er høyere enn $tall2 <br />");
+            print ("Tall 1 er lik $tall1 
+                    Tall 2 er lik $tall2 
+                    $tall1 er høyere enn $tall2 <br />");
         }
 
         else if ($tall1 < $tall2) {
-            print ("$tall2 er høyere enn $tall1 <br />");
+            print ("Tall 1 er lik $tall1 
+                    Tall 2 er lik $tall2 
+                    $tall2 er høyere enn $tall1 <br />");
         }
 
         else if ($tall1 == $tall2) {
-            print ("$tall1 og $tall2 er like verdi <br />");
+            print ("Tall 1 er lik $tall1 
+                    Tall 2 er lik $tall2 
+                    $tall1 og $tall2 er like verdi <br />");
         }
 
         else {
