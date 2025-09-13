@@ -1,10 +1,10 @@
 <?php
     $tall1=$_POST ["tall1"];
     $tall2=$_POST ["tall2"];
-    $operation=$_POST ["operation"];
+    $operasjon=$_POST ["operasjon"];
 
     print ("Tall 1 er $tall1 og Tall 2 er $tall2 <br />");
-    print ("Valgt operasjon er $operation");
+    print ("Valgt operasjon er $operasjon <br />");
 
         if ($operasjon=="1") {
             $svar=$tall1+$tall2;
