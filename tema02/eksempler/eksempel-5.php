@@ -8,47 +8,36 @@
         if ($operasjon=="1") {
             $svar=$tall1+$tall2;
         
-            print ("$tall1 + $tall2 = $svar <br />");
             print ("Valgt operasjon er addisjon <br />");
-        }
-
-        else if ($operasjon=="2"){
-            print ("Valgt operasjon er subtraksjon <br />");
-        }
-        else if ($operasjon=="3"){
-            print ("Valgt operasjon er multiplikasjon <br />");
-        }
-        else if ($operasjon=="4"){
-            print ("Valgt operasjon er divisjon <br />");
-        }
-
-        else if ($operasjon=="1") {
-            $svar=$tall1+$tall2;
-        
-        print ("$tall1 + $tall2 = $svar <br />");
+            print ("$tall1 + $tall2 = $svar <br />");
         }
         
+
         else if ($operasjon=="2") {
             $svar=$tall1-$tall2;
 
+            print ("Valgt operasjon er subtraksjon <br />");
             print ("$tall1 - $tall2 = $svar <br />");   
         }
+        
 
-        else if ($operasjon=="3") {
-            $svar=$tall1*$tall2;
-
+        else if ($operasjon=="3"){
+            print ("Valgt operasjon er multiplikasjon <br />");
             print ("$tall1 * $tall2 = $svar <br />");
         }
 
-        else if ($operasjon=="4") {
+
+        else if ($operasjon=="4"){
             if ($tall2==0) {
                 print ("Kan ikke dele med 0! <br />");
                 exit;
             }
             $svar=$tall1/$tall2;
-
+            print ("Valgt operasjon er divisjon <br />");
             print ("$tall1 / $tall2 = $svar <br />");
         }
+
+        
         else {
             print ("Ugyldig operasjon, vennligst tast 1,2,3,4 for å velge regneoperasjon <br />");
             exit;
