@@ -1,7 +1,7 @@
 <?php
     $tall1=$_POST ["tall1"];
     $tall2=$_POST ["tall2"];
-    $operasjon=$_POST ["operation"];
+    $operation=$_POST ["operation"];
 
     print ("Tall 1 er $tall1 og Tall 2 er $tall2 <br />");
     print ("Valgt operasjon er $operation");
