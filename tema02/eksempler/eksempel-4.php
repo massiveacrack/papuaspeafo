@@ -6,20 +6,19 @@
         print ("Du har ikke svart på alle spørsmålene, vennligst prøv igjen! <br />");
     }
 
-
-    if ($gift=="j" && $barn=="j") {
+    else if ($gift=="j" && $barn=="j") {
         print ("Du er gift og har barn <br />");
     }
   
-    if ($gift=="j" && $barn=="n") {
+    else if ($gift=="j" && $barn=="n") {
         print ("Du er gift og har ikke barn <br />");
     }
 
-    if ($gift=="n" && $barn=="j") {
+    else if ($gift=="n" && $barn=="j") {
         print ("Du er ikke gift og har barn <br />");
     }
 
-    if ($gift=="n" && $barn=="n") {
+    else if ($gift=="n" && $barn=="n") {
         print ("Du er ikke gift og har ikke barn <br />");
     }
 
