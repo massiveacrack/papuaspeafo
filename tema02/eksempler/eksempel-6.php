@@ -23,4 +23,4 @@
             print ("Ugyldig input, vennligst tast inn to tall <br />");
             exit;
         }
-    
+?>
