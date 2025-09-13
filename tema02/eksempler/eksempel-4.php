@@ -4,5 +4,3 @@
     if ($gift=="j" || $barn=="j") {
         print ("Du er gift og har barn <br />");
     }
-
-    if 
