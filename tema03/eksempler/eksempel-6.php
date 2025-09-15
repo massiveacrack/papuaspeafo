@@ -5,7 +5,7 @@ if ($angittTall>0)
 {
     print("Du ikke valgt en positiv og hell tall" <br />);
 }
-else ($angittTall=<0)
+else
 { 
     for ($tall=1;$tall<=$angittTall;$tall++)
     {
