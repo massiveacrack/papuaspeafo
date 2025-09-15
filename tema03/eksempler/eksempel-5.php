@@ -10,8 +10,7 @@ for ($tall=1;$tall<=10;$tall++) {
     {
         print("Summen av tallene 1-10 er lik $sum ");
         print("<br />");
-        print("Gjennomsnittet er $gjennomsnitt"); 
-        print("<br />");
+        print("Gjennomsnittet av tallene 1-10 er lik $gjennomsnitt"); 
     }
 
 ?>
