@@ -9,8 +9,10 @@ else
 { 
     for ($tall=1;$tall<=$angittTall;$tall++)
     {
-    print("$tall <br />");
+    print(" $tall <br />");
+
     }
+    print ("<br />");
 }
 
 ?>
