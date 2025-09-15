@@ -9,3 +9,5 @@ $tall=$summ+$tall;
     {
         print("$tall ");
     }
+
+?>
