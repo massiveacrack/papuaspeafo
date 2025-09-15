@@ -2,17 +2,15 @@
 
 $angittTall=$_POST["angittTall"];
 if ($angittTall<0)
-{
-    print("Du ikke valgt en positiv og hell tall <br />");
-}
-else
-{ 
-    for ($tall=1;$tall<=$angittTall;$tall++)
     {
-    print("$tall ");
-
+        print("Du ikke valgt en positiv og hell tall <br />");
     }
-}
+
+else{ 
+    for ($tall=1;$tall<=$angittTall;$tall++) {
+         print("$tall ");
+        }
+    }
 
 ?>
     
