@@ -1,7 +1,7 @@
 <?php
 
 for ($tall=1;$tall<=10;$tall++)
-    $tallrot=sqrt($tall);
+    $tallrot=($tall*$tall);
 
 
 {
