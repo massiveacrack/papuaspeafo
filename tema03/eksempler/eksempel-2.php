@@ -1,7 +1,8 @@
 <?php
 
+$tallrot=($tall*$tall);
 for ($tall=1;$tall<=10;$tall++)
-    $tallrot=($tall*$tall);
+    
 
 
 {
