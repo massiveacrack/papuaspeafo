@@ -1,9 +1,9 @@
 <?php
 
-$tallvalg=$_POST["tallvalg"];
+$tall=$_POST["tall"];
 
 
-for ($tall=1;$tall<=$tallvalg;$tall++)
+for ($tall=1;$tall<=$tall;$tall++)
     {
     print("$tall ");
     }
