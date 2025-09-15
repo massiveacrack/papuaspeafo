@@ -9,7 +9,7 @@ else
 { 
     for ($tall=1;$tall<=$angittTall;$tall++)
     {
-    print(" $tall ");
+    print("$tall ");
 
     }
 }
