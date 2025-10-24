@@ -50,7 +50,7 @@ if (isset($_POST["slettPoststedKnapp"])) {
 
     <h3>Slett Student</h3>
     <?php if ($message) print("<p>$message</p>"); ?>
-    <form method="post" action="" id="slettPoststedSkjema" name="slettPoststedSkjema" onSubmit="return bekreft()">
+    <form method="post" action="" id="slettPoststedBruker" name="slettPoststedBruker" onSubmit="return bekreft()">
         Brukernavn: 
         <select name="brukernavn" id="brukernavn" required>
             <option value="">velg brukernavn</option>
