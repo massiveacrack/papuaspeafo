@@ -31,9 +31,6 @@ if (isset($_POST["slettPoststedKnapp"])) {
     }
 }
 ?>
-<form>
-  <a href="index.html">Tilbake til meny</a>
-</form>
 
 <!DOCTYPE html>
 <html>
@@ -76,5 +73,7 @@ if (isset($_POST["slettPoststedKnapp"])) {
         <input type="submit" value="Slett Student" name="slettStudentKnapp">
     </form>
 </body>
-
 </html>
+<form>
+  <a href="index.html">Tilbake til meny</a>
+</form>
