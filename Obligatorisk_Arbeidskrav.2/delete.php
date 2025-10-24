@@ -58,6 +58,7 @@ if (isset($_POST["slettPoststedKnapp"])) {
         </select><br>
         <input type="submit" value="Slett poststed" name="slettStudentKnapp" id="slettStudentKnapp">
     </form>
-    <a href="index.php">Tilbake til meny</a>
+    
+    <li><a href="index.html">Tilbake til meny</a></li>
 </body>
 </html>
