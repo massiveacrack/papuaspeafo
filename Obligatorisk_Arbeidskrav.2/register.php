@@ -12,19 +12,19 @@ if (isset($_POST["velgUkedagKnapp"])) {
 
         // Lengdekontroll
         if (strlen($klassekode) > 5) {
-            $message = "Klassekoden er for lang (maks 5 tegn).";
+            $klassemessage = "Klassekoden er for lang (maks 5 tegn).";
         } elseif (strlen($klassekode) < 5) {
-            $message = "Klassekoden er for kort (må være 5 tegn).";
+            $klassemessage = "Klassekoden er for kort (må være 5 tegn).";
         } else {
             $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
                            VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
             if (mysqli_query($db, $sqlSetning)) {
-                $message = "Følgende klasse er registrert: $klassekode";
+                $klassemessage = "Følgende klasse er registrert: $klassekode";
             } else {
                 if (mysqli_errno($db) == 1062) {
-                    $message = "Denne klassekoden finnes allerede. Prøv en annen.";
+                    $klassemessage = "Denne klassekoden finnes allerede. Prøv en annen.";
                 } else {
-                    $message = "Det oppsto en feil under registrering av data.";
+                    $klassemessage = "Det oppsto en feil under registrering av data.";
                 }
             }
         }
@@ -39,19 +39,19 @@ if (isset($_POST["velgUkedagKnapp"])) {
 
         // Lengdekontroll
         if (strlen($brukernavn) > 7) {
-            $message = "Brukernavnet er for langt (maks 7 tegn).";
+            $studentmessage = "Brukernavnet er for langt (maks 7 tegn).";
         } elseif (strlen($brukernavn) < 7) {
-            $message = "Brukernavnet er for kort (må være 7 tegn).";
+            $studentmessage = "Brukernavnet er for kort (må være 7 tegn).";
         } else {
             $sqlSetning = "INSERT INTO student (brukernavn, fornavn, etternavn, klassekode)
                            VALUES ('$brukernavn', '$fornavn', '$etternavn', '$klassekode')";
             if (mysqli_query($db, $sqlSetning)) {
-                $message = "Følgende student er registrert: $fornavn $etternavn";
+                $studentmessage = "Følgende student er registrert: $fornavn $etternavn";
             } else {
                 if (mysqli_errno($db) == 1062) {
-                    $message = "Dette brukernavnet finnes allerede. Prøv et annet.";
+                    $studentmessage = "Dette brukernavnet finnes allerede. Prøv et annet.";
                 } else {
-                    $message = "Det oppsto en feil under registrering av data.";
+                    $studentmessage = "Det oppsto en feil under registrering av data.";
                 }
             }
         }
@@ -81,7 +81,7 @@ if (isset($_POST["velgUkedagKnapp"])) {
 </head>
 <body>
 <h3>Registrer Ny Klasse</h3>
-<?php if ($message) echo "<p>$message</p>"; ?>
+<?php if ($klassemessage) echo "<p>$klassemessage</p>"; ?>
 
 <form method="post" action="">
     <input type="hidden" name="klasse">
@@ -92,7 +92,7 @@ if (isset($_POST["velgUkedagKnapp"])) {
 </form>
 
 <h3>Registrer Ny Student</h3>
-<?php if ($message) echo "<p>$message</p>"; ?>
+<?php if ($studentmessage) echo "<p>$studentmessage</p>"; ?>
 
 <form method="post" action="">
     <input type="hidden" name="student">
