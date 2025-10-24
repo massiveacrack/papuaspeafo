@@ -1,11 +1,13 @@
 <?php
 include("db_connect.php");
 
-$message = '';
+$klassemessage = '';
+$studentmessage = '';
+
 if (isset($_POST["slettPoststedKnapp"])) {
     $klassekode = mysqli_real_escape_string($db, $_POST["klassekode"]);
     if (!$klassekode) {
-        $message = "Det er ikke valgt noe klassekode";
+        $klassemessage = "Det er ikke valgt noe klassekode";
     } else {
         $sqlSetning = "SELECT COUNT(*) as count FROM student WHERE klassekode = '$klassekode'";
         $result = mysqli_query($db, $sqlSetning);
@@ -15,17 +17,17 @@ if (isset($_POST["slettPoststedKnapp"])) {
         } else {
             $sqlSetning = "DELETE FROM klasse WHERE klassekode = '$klassekode'";
             mysqli_query($db, $sqlSetning) or die ("ikke mulig å slette data");
-            $message = "Følgende klasse er nå slettet: $klassekode";
+            $klassemessage = "Følgende klasse er nå slettet: $klassekode";
         }
     }
 } elseif (isset($_POST["slettStudentKnapp"])) {
     $brukernavn = mysqli_real_escape_string($db, $_POST["brukernavn"]);
     if (!$brukernavn) {
-        $message = "Det er ikke valgt noe brukernavn";
+        $studentmessage = "Det er ikke valgt noe brukernavn";
     } else {
         $sqlSetning = "DELETE FROM student WHERE brukernavn = '$brukernavn'";
         mysqli_query($db, $sqlSetning) or die ("ikke mulig å slette data");
-        $message = "Følgende student er nå slettet: $brukernavn";
+        $studentmessage = "Følgende student er nå slettet: $brukernavn";
     }
 }
 ?>
