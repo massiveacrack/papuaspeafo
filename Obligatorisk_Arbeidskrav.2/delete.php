@@ -40,7 +40,7 @@ if (isset($_POST["slettPoststedKnapp"])) {
 </head>
 <body>
     <h3>Slett Klasse</h3>
-    <?php if ($message) print("<p>$message</p>"); ?>
+    <?php if ($klassemessage) print("<p>$klassemessage</p>"); ?>
     <form method="post" action="" id="slettPoststedSkjema" name="slettPoststedSkjema" onSubmit="return bekreft()">
         Klassekode: 
         <select name="klassekode" id="klassekode" required>
@@ -51,7 +51,7 @@ if (isset($_POST["slettPoststedKnapp"])) {
     </form>
 
     <h3>Slett Student</h3>
-    <?php if ($message) print("<p>$message</p>"); ?>
+    <?php if ($studentmessage) print("<p>$studentmessage</p>"); ?>
     <form method="post" action="" id="slettPoststedBruker" name="slettPoststedBruker" onSubmit="return bekreft()">
         Brukernavn: 
         <select name="brukernavn" id="brukernavn" required>
