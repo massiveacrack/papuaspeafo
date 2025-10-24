@@ -1,5 +1,5 @@
 <?php
-require_once 'db_connect.php';
+include("db_connect.php");
 ?>
 
 <!DOCTYPE html>
@@ -8,27 +8,39 @@ require_once 'db_connect.php';
     <title>Vis Data</title>
 </head>
 <body>
-    <h2>Alle Klasser</h2>
-    <table border="1">
-        <tr><th>Klassekode</th><th>Klassenavn</th><th>Studiumkode</th></tr>
-        <?php
-        $result = $pdo->query("SELECT * FROM klasse");
-        while ($row = $result->fetch()) {
-            echo "<tr><td>{$row['klassekode']}</td><td>{$row['klassenavn']}</td><td>{$row['studiumkode']}</td></tr>";
+    <h3>Alle Klasser</h3>
+    <?php
+    $sqlSetning = "SELECT * FROM klasse ORDER BY klassekode;";
+    $sqlResultat = mysqli_query($db, $sqlSetning) or die ("ikke mulig å hente data");
+    $antallRader = mysqli_num_rows($sqlResultat);
+    if ($antallRader > 0) {
+        print("<table border='1'><tr><th>Klassekode</th><th>Klassenavn</th><th>Studiumkode</th></tr>");
+        for ($r = 1; $r <= $antallRader; $r++) {
+            $rad = mysqli_fetch_array($sqlResultat);
+            print("<tr><td>{$rad['klassekode']}</td><td>{$rad['klassenavn']}</td><td>{$rad['studiumkode']}</td></tr>");
         }
-        ?>
-    </table>
+        print("</table>");
+    } else {
+        print("Ingen klasser registrert");
+    }
+    ?>
 
-    <h2>Alle Studenter</h2>
-    <table border="1">
-        <tr><th>Brukernavn</th><th>Fornavn</th><th>Etternavn</th><th>Klassekode</th></th></tr>
-        <?php
-        $result = $pdo->query("SELECT * FROM student");
-        while ($row = $result->fetch()) {
-            echo "<tr><td>{$row['brukernavn']}</td><td>{$row['fornavn']}</td><td>{$row['etternavn']}</td><td>{$row['klassekode']}</td></tr>";
+    <h3>Alle Studenter</h3>
+    <?php
+    $sqlSetning = "SELECT * FROM student ORDER BY brukernavn;";
+    $sqlResultat = mysqli_query($db, $sqlSetning) or die ("ikke mulig å hente data");
+    $antallRader = mysqli_num_rows($sqlResultat);
+    if ($antallRader > 0) {
+        print("<table border='1'><tr><th>Brukernavn</th><th>Fornavn</th><th>Etternavn</th><th>Klassekode</th></tr>");
+        for ($r = 1; $r <= $antallRader; $r++) {
+            $rad = mysqli_fetch_array($sqlResultat);
+            print("<tr><td>{$rad['brukernavn']}</td><td>{$rad['fornavn']}</td><td>{$rad['etternavn']}</td><td>{$rad['klassekode']}</td></tr>");
         }
-        ?>
-    </table>
+        print("</table>");
+    } else {
+        print("Ingen studenter registrert");
+    }
+    ?>
     <a href="index.php">Tilbake til meny</a>
 </body>
 </html>

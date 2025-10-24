@@ -1,15 +1,31 @@
 <?php
-require_once 'db_connect.php';
+include("db_connect.php");
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['delete_klasse'])) {
-        $klassekode = $_POST['klassekode'];
-        $stmt = $pdo->prepare("DELETE FROM klasse WHERE klassekode = ?");
-        $stmt->execute([$klassekode]);
-    } elseif (isset($_POST['delete_student'])) {
-        $brukernavn = $_POST['brukernavn'];
-        $stmt = $pdo->prepare("DELETE FROM student WHERE brukernavn = ?");
-        $stmt->execute([$brukernavn]);
+$message = '';
+if (isset($_POST["slettPoststedKnapp"])) {
+    $klassekode = mysqli_real_escape_string($db, $_POST["klassekode"]);
+    if (!$klassekode) {
+        $message = "Det er ikke valgt noe klassekode";
+    } else {
+        $sqlSetning = "SELECT COUNT(*) as count FROM student WHERE klassekode = '$klassekode'";
+        $result = mysqli_query($db, $sqlSetning);
+        $row = mysqli_fetch_array($result);
+        if ($row['count'] > 0) {
+            $message = "Kan ikke slette klasse med studenter tilknyttet. Fjern studenter først.";
+        } else {
+            $sqlSetning = "DELETE FROM klasse WHERE klassekode = '$klassekode'";
+            mysqli_query($db, $sqlSetning) or die ("ikke mulig å slette data");
+            $message = "Følgende klasse er nå slettet: $klassekode";
+        }
+    }
+} elseif (isset($_POST["slettStudentKnapp"])) {
+    $brukernavn = mysqli_real_escape_string($db, $_POST["brukernavn"]);
+    if (!$brukernavn) {
+        $message = "Det er ikke valgt noe brukernavn";
+    } else {
+        $sqlSetning = "DELETE FROM student WHERE brukernavn = '$brukernavn'";
+        mysqli_query($db, $sqlSetning) or die ("ikke mulig å slette data");
+        $message = "Følgende student er nå slettet: $brukernavn";
     }
 }
 ?>
@@ -18,36 +34,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 <head>
     <title>Slett Data</title>
+    <script src="functions.js"></script>
 </head>
 <body>
-    <h2>Slett Klasse</h2>
-    <form method="post">
-        <input type="hidden" name="delete_klasse">
+    <h3>Slett Klasse</h3>
+    <?php if ($message) print("<p>$message</p>"); ?>
+    <form method="post" action="" id="slettPoststedSkjema" name="slettPoststedSkjema" onSubmit="return bekreft()">
         Klassekode: 
-        <select name="klassekode" required>
-            <?php
-            $result = $pdo->query("SELECT klassekode, klassenavn FROM klasse");
-            while ($row = $result->fetch()) {
-                echo "<option value='{$row['klassekode']}'>{$row['klassenavn']}</option>";
-            }
-            ?>
+        <select name="klassekode" id="klassekode" required>
+            <option value="">velg klassekode</option>
+            <?php include("dynamic_functions.php"); listeboksKlassekode(); ?>
         </select><br>
-        <input type="submit" value="Slett Klasse">
+        <input type="submit" value="Slett poststed" name="slettPoststedKnapp" id="slettPoststedKnapp">
     </form>
 
-    <h2>Slett Student</h2>
-    <form method="post">
-        <input type="hidden" name="delete_student">
+    <h3>Slett Student</h3>
+    <?php if ($message) print("<p>$message</p>"); ?>
+    <form method="post" action="" id="slettPoststedSkjema" name="slettPoststedSkjema" onSubmit="return bekreft()">
         Brukernavn: 
-        <select name="brukernavn" required>
-            <?php
-            $result = $pdo->query("SELECT brukernavn, fornavn, etternavn FROM student");
-            while ($row = $result->fetch()) {
-                echo "<option value='{$row['brukernavn']}'>{$row['fornavn']} {$row['etternavn']}</option>";
-            }
-            ?>
+        <select name="brukernavn" id="brukernavn" required>
+            <option value="">velg brukernavn</option>
+            <?php include("dynamic_functions.php"); listeboksBrukernavn(); ?>
         </select><br>
-        <input type="submit" value="Slett Student">
+        <input type="submit" value="Slett poststed" name="slettStudentKnapp" id="slettStudentKnapp">
     </form>
     <a href="index.php">Tilbake til meny</a>
 </body>
