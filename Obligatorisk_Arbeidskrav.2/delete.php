@@ -71,7 +71,8 @@ if (isset($_POST["slettPoststedKnapp"])) {
             <?php include("dynamic_functions.php"); listeboksBrukernavn(); ?>
         </select><br> 
     <input type="submit" value="Slett Student" name="slettStudentKnapp">
-    <a href="index.html">Tilbake til meny</a>
     </form>
+    <a href="index.html">Tilbake til meny</a>
+    
 </body>
 </html>
