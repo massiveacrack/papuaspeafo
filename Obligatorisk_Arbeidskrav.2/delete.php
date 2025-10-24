@@ -61,9 +61,7 @@ if (isset($_POST["slettPoststedKnapp"])) {
         </select><br>
         <input type="submit" value="Slett Klasse" name="slettPoststedKnapp">
     </form>
-<form>
-  <a href="index.html">Tilbake til meny</a>
-</form>
+
     <h3>Slett Student</h3>
     <?php if ($studentmessage) print("<p>$studentmessage</p>"); ?>
     <form method="post" action="" name="slettPoststedBruker" onsubmit="return bekreft(this)">
@@ -71,8 +69,8 @@ if (isset($_POST["slettPoststedKnapp"])) {
         <select name="brukernavn" id="brukernavn" required>
             <option value="">velg brukernavn</option>
             <?php include("dynamic_functions.php"); listeboksBrukernavn(); ?>
-        </select><br>
-        <input type="submit" value="Slett Student" name="slettStudentKnapp">
+        </select><br> 
+    <input type="submit" value="Slett Student" name="slettStudentKnapp">
     </form>
 </body>
 </html>
