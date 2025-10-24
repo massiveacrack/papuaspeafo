@@ -58,6 +58,6 @@ if (isset($_POST["velgUkedagKnapp"])) { // Reused button name for consistency
         </select><br>
         <input type="submit" value="Velg ukedag" name="velgUkedagKnapp" id="velgUkedagKnapp">
     </form>
-    <a href="index.php">Tilbake til meny</a>
+    <a href="index.html">Tilbake til meny</a>
 </body>
 </html>
