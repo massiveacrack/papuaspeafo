@@ -13,7 +13,7 @@ if (isset($_POST["slettPoststedKnapp"])) {
         $result = mysqli_query($db, $sqlSetning);
         $row = mysqli_fetch_array($result);
         if ($row['count'] > 0) {
-            $message = "Kan ikke slette klasse med studenter tilknyttet. Fjern studenter først.";
+            $klassemessage = "Kan ikke slette klasse med studenter tilknyttet. Fjern studenter først.";
         } else {
             $sqlSetning = "DELETE FROM klasse WHERE klassekode = '$klassekode'";
             mysqli_query($db, $sqlSetning) or die ("ikke mulig å slette data");
@@ -36,30 +36,42 @@ if (isset($_POST["slettPoststedKnapp"])) {
 <html>
 <head>
     <title>Slett Data</title>
-    <script src="functions.js"></script>
+    <script>
+    function bekreft(form) {
+        if (form.name === "slettPoststedSkjema") {
+            var klassekode = form.klassekode.value;
+            return confirm("Er du sikker på at du vil slette klassen: " + klassekode + "?");
+        } else if (form.name === "slettPoststedBruker") {
+            var brukernavn = form.brukernavn.value;
+            return confirm("Er du sikker på at du vil slette studenten: " + brukernavn + "?");
+        } else {
+            return confirm("Er du sikker?");
+        }
+    }
+    </script>
 </head>
 <body>
     <h3>Slett Klasse</h3>
     <?php if ($klassemessage) print("<p>$klassemessage</p>"); ?>
-    <form method="post" action="" id="slettPoststedSkjema" name="slettPoststedSkjema" onSubmit="return bekreft()">
+    <form method="post" action="" name="slettPoststedSkjema" onsubmit="return bekreft(this)">
         Klassekode: 
         <select name="klassekode" id="klassekode" required>
             <option value="">velg klassekode</option>
             <?php include("dynamic_functions.php"); listeboksKlassekode(); ?>
         </select><br>
-        <input type="submit" value="Slett Klasse" name="slettPoststedKnapp" id="slettPoststedKnapp">
+        <input type="submit" value="Slett Klasse" name="slettPoststedKnapp">
     </form>
 
     <h3>Slett Student</h3>
     <?php if ($studentmessage) print("<p>$studentmessage</p>"); ?>
-    <form method="post" action="" id="slettPoststedBruker" name="slettPoststedBruker" onSubmit="return bekreft()">
+    <form method="post" action="" name="slettPoststedBruker" onsubmit="return bekreft(this)">
         Brukernavn: 
         <select name="brukernavn" id="brukernavn" required>
             <option value="">velg brukernavn</option>
             <?php include("dynamic_functions.php"); listeboksBrukernavn(); ?>
         </select><br>
-        <input type="submit" value="Slett Student" name="slettStudentKnapp" id="slettStudentKnapp">
+        <input type="submit" value="Slett Student" name="slettStudentKnapp">
     </form>
+    <a href="index.html">Tilbake til meny</a>
 </body>
-<a href="index.html">Tilbake til meny</a>
 </html>
