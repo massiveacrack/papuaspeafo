@@ -60,10 +60,24 @@ if (isset($_POST["velgUkedagKnapp"])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
-    <title>Registrer Data</title>
     <meta charset="UTF-8">
+    <title>Registrer Data</title>
+
+    <script>
+    // Denne kjører når du trykker på "Registrer"-knappene
+    function bekreft(type) {
+        if (type === 'klasse') {
+            return confirm("Er du sikker på at du vil registrere denne klassen?");
+        } else if (type === 'student') {
+            return confirm("Er du sikker på at du vil registrere denne studenten?");
+        } else {
+            return confirm("Er du sikker?");
+        }
+    }
+    </script>
+
 </head>
 <body>
 <h3>Registrer Ny Klasse</h3>
@@ -74,7 +88,7 @@ if (isset($_POST["velgUkedagKnapp"])) {
     Klassekode: <input type="text" name="klassekode" required><br>
     Klassenavn: <input type="text" name="klassenavn" required><br>
     Studiumkode: <input type="text" name="studiumkode" required><br>
-    <input type="submit" value="Registrer klasse" name="velgUkedagKnapp">
+    <input type="submit" value="Registrer klasse" name="velgUkedagKnapp" onclick="return bekreft('klasse')">
 </form>
 
 <h3>Registrer Ny Student</h3>
@@ -90,7 +104,7 @@ if (isset($_POST["velgUkedagKnapp"])) {
         <option value="">Velg klassekode</option>
         <?php include("dynamic_functions.php"); listeboksKlassekode(); ?>
     </select><br>
-    <input type="submit" value="Registrer student" name="velgUkedagKnapp">
+    <input type="submit" value="Registrer student" name="velgUkedagKnapp" onclick="return bekreft('student')">
 </form>
 
 <a href="index.html">Tilbake til meny</a>
