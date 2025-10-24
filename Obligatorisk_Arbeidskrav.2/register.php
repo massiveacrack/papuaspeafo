@@ -1,6 +1,7 @@
 <?php 
 include("db_connect.php"); 
-$message = '';
+$klassemessage = '';
+$studentmessage = '';
 
 if (isset($_POST["velgUkedagKnapp"])) {
 
