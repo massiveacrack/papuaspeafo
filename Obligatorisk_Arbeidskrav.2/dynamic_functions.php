@@ -28,5 +28,9 @@ function listeboksBrukernavn() {
         $etternavn = $rad["etternavn"];
         print("<option value='$brukernavn'>$fornavn $etternavn</option>");
     }
+    
 }
 ?>
+<form>
+  <a href="index.html">Tilbake til meny</a>
+</form>
