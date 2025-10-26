@@ -75,5 +75,6 @@ if (isset($_POST["slettPoststedKnapp"])) {
 
     <br>
     <a href="index.html">Tilbake til meny</a>
+</br>
 </body>
 </html>
