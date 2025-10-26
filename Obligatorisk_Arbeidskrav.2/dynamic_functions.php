@@ -31,6 +31,3 @@ function listeboksBrukernavn() {
     
 }
 ?>
-<form>
-  <a href="index.html">Tilbake til meny</a>
-</form>
