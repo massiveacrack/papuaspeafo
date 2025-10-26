@@ -15,19 +15,18 @@ function listeboksKlassekode() {
     }
 }
 
+include("db_connect.php");
+
 function listeboksBrukernavn() {
     global $db;
-    $sqlSetning = "SELECT brukernavn, fornavn, etternavn FROM student ORDER BY brukernavn;";
-    $sqlResultat = mysqli_query($db, $sqlSetning) or die ("ikke mulig å hente data fra databasen");
-    $antallRader = mysqli_num_rows($sqlResultat);
+    $sql = "SELECT brukernavn, fornavn, etternavn FROM student ORDER BY brukernavn;";
+    $result = mysqli_query($db, $sql) or die("Error fetching students: " . mysqli_error($db));
 
-    for ($r = 1; $r <= $antallRader; $r++) {
-        $rad = mysqli_fetch_array($sqlResultat);
-        $brukernavn = $rad["brukernavn"];
-        $fornavn = $rad["fornavn"];
-        $etternavn = $rad["etternavn"];
-        print("<option value='$brukernavn'>$fornavn $etternavn</option>");
+    while ($row = mysqli_fetch_assoc($result)) {
+        $brukernavn = $row['brukernavn'];
+        $fornavn = $row['fornavn'];
+        $etternavn = $row['etternavn'];
+        echo "<option value='$brukernavn'>$fornavn $etternavn</option>";
     }
-    
 }
 ?>
