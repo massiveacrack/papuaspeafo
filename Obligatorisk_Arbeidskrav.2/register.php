@@ -58,6 +58,8 @@ if (isset($_POST["velgUkedagKnapp"])) {
         }
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -91,6 +93,8 @@ if (isset($_POST["velgUkedagKnapp"])) {
     Studiumkode: <input type="text" name="studiumkode" required><br>
     <input type="submit" value="Registrer klasse" name="velgUkedagKnapp" onclick="return bekreft('klasse')">
 </form>
+
+
 
 <h3>Registrer Ny Student</h3>
 <?php if ($studentmessage) echo "<p>$studentmessage</p>"; ?>
