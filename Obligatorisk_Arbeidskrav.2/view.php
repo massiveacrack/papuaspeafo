@@ -3,6 +3,7 @@ include("db_connect.php");
 ?>
 
 <!DOCTYPE html>
+<a href="index.html">Tilbake til meny</a>
 <html>
 <head>
     <title>Vis Data</title>

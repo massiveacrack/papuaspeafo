@@ -63,6 +63,7 @@ if (isset($_POST["velgUkedagKnapp"])) {
 ?>
 
 <!DOCTYPE html>
+<a href="index.html">Tilbake til meny</a>
 <html lang="no">
 <head>
     <meta charset="UTF-8">
