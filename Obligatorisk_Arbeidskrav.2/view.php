@@ -42,6 +42,5 @@ include("db_connect.php");
         print("Ingen studenter registrert");
     }
     ?>
-    <a href="index.html">Tilbake til meny</a>
 </body>
 </html>

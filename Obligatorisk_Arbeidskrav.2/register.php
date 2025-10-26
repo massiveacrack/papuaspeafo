@@ -112,7 +112,5 @@ if (isset($_POST["velgUkedagKnapp"])) {
     </select><br>
     <input type="submit" value="Registrer student" name="velgUkedagKnapp" onclick="return bekreft('student')">
 </form>
-
-<a href="index.html">Tilbake til meny</a>
 </body>
 </html>
