@@ -14,12 +14,12 @@ if (isset($_POST["velgUkedagKnapp"])) {
         $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
                        VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
         if (mysqli_query($db, $sqlSetning)) {
-            $klassemessage = "Følgende klasse er registrert: $klassekode";
+            $klassemessage = "Følgende klasse er registrert: <strong>$klassekode</strong>";
         } else {
             if (mysqli_errno($db) == 1062) {
-                $klassemessage = "Denne klassekoden finnes allerede. Prøv en annen.";
+                $klassemessage = "Feil: Klassen med kode <strong>$klassekode</strong> finnes allerede.";
             } else {
-                $klassemessage = "Det oppsto en feil under registrering av data.";
+                $klassemessage = "Feil under registrering: " . mysqli_error($db);
             }
         }
     }
@@ -34,12 +34,12 @@ if (isset($_POST["velgUkedagKnapp"])) {
         $sqlSetning = "INSERT INTO student (brukernavn, fornavn, etternavn, klassekode)
                        VALUES ('$brukernavn', '$fornavn', '$etternavn', '$klassekode')";
         if (mysqli_query($db, $sqlSetning)) {
-            $studentmessage = "Følgende student er registrert: $fornavn $etternavn";
+            $studentmessage = "Følgende student er registrert: <strong>$fornavn $etternavn</strong>";
         } else {
             if (mysqli_errno($db) == 1062) {
-                $studentmessage = "Dette brukernavnet finnes allerede. Prøv et annet.";
+                $studentmessage = "Feil: Brukernavnet <strong>$brukernavn</strong> finnes allerede.";
             } else {
-                $studentmessage = "Det oppsto en feil under registrering av data.";
+                $studentmessage = "Feil under registrering: " . mysqli_error($db);
             }
         }
     }
@@ -57,9 +57,8 @@ if (isset($_POST["velgUkedagKnapp"])) {
             return confirm("Er du sikker på at du vil registrere denne klassen?");
         } else if (type === 'student') {
             return confirm("Er du sikker på at du vil registrere denne studenten?");
-        } else {
-            return confirm("Er du sikker?");
         }
+        return confirm("Er du sikker?");
     }
     </script>
 </head>
