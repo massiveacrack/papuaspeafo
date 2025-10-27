@@ -68,6 +68,8 @@ if (isset($_POST["velgUkedagKnapp"])) {
 <h3>Registrer Ny Klasse</h3>
 <?php if ($klassemessage) echo "<p>$klassemessage</p>"; ?>
 
+
+
 <form method="post" action="">
     <input type="hidden" name="klasse">
     Klassekode: <input type="text" name="klassekode" required><br>
