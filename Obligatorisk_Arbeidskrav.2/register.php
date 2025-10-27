@@ -11,22 +11,16 @@ if (isset($_POST["velgUkedagKnapp"])) {
         $klassenavn = mysqli_real_escape_string($db, $_POST["klassenavn"]);
         $studiumkode = mysqli_real_escape_string($db, $_POST["studiumkode"]);
 
-        // Lengdekontroll
-        if (strlen($klassekode) > 5) {
-            $klassemessage = "Klassekoden er for lang (maks 5 tegn).";
-        } elseif (strlen($klassekode) < 5) {
-            $klassemessage = "Klassekoden er for kort (må være 5 tegn).";
+        // Ingen lengdekrav for klassekode
+        $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
+                       VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
+        if (mysqli_query($db, $sqlSetning)) {
+            $klassemessage = "Følgende klasse er registrert: $klassekode";
         } else {
-            $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
-                           VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
-            if (mysqli_query($db, $sqlSetning)) {
-                $klassemessage = "Følgende klasse er registrert: $klassekode";
+            if (mysqli_errno($db) == 1062) {
+                $klassemessage = "Denne klassekoden finnes allerede. Prøv en annen.";
             } else {
-                if (mysqli_errno($db) == 1062) {
-                    $klassemessage = "Denne klassekoden finnes allerede. Prøv en annen.";
-                } else {
-                    $klassemessage = "Det oppsto en feil under registrering av data.";
-                }
+                $klassemessage = "Det oppsto en feil under registrering av data.";
             }
         }
     }
@@ -38,7 +32,7 @@ if (isset($_POST["velgUkedagKnapp"])) {
         $etternavn = mysqli_real_escape_string($db, $_POST["etternavn"]);
         $klassekode = mysqli_real_escape_string($db, $_POST["klassekode"]);
 
-        // Lengdekontroll
+        // Lengdekontroll for brukernavn beholdes
         if (strlen($brukernavn) > 7) {
             $studentmessage = "Brukernavnet er for langt (maks 7 tegn).";
         } elseif (strlen($brukernavn) < 7) {
@@ -58,8 +52,6 @@ if (isset($_POST["velgUkedagKnapp"])) {
         }
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -94,8 +86,6 @@ if (isset($_POST["velgUkedagKnapp"])) {
     Studiumkode: <input type="text" name="studiumkode" required><br>
     <input type="submit" value="Registrer klasse" name="velgUkedagKnapp" onclick="return bekreft('klasse')">
 </form>
-
-
 
 <h3>Registrer Ny Student</h3>
 <?php if ($studentmessage) echo "<p>$studentmessage</p>"; ?>
