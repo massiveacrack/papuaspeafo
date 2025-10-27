@@ -1,7 +1,5 @@
 <?php 
 include("db_connect.php"); 
-$klassemessage = '';
-$studentmessage = '';
 
 if (isset($_POST["velgUkedagKnapp"])) {
 
@@ -13,14 +11,14 @@ if (isset($_POST["velgUkedagKnapp"])) {
 
         $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
                        VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
-        if (mysqli_query($db, $sqlSetning)) {
-            echo "<script>alert('Følgende klasse er registrert: $klassekode');</script>";
-        } else {
-            if (mysqli_errno($db) == 1062) {
+        if (!mysqli_query($db, $sqlSetning)) {
+            if (mysqli_errno($db) == 1062) { // Duplicate
                 echo "<script>alert('Feil: Klassen med kode $klassekode finnes allerede.');</script>";
             } else {
                 echo "<script>alert('Feil under registrering: " . mysqli_error($db) . "');</script>";
             }
+        } else {
+            echo "<script>alert('Følgende klasse er registrert: $klassekode');</script>";
         }
     }
 
@@ -33,14 +31,14 @@ if (isset($_POST["velgUkedagKnapp"])) {
 
         $sqlSetning = "INSERT INTO student (brukernavn, fornavn, etternavn, klassekode)
                        VALUES ('$brukernavn', '$fornavn', '$etternavn', '$klassekode')";
-        if (mysqli_query($db, $sqlSetning)) {
-            echo "<script>alert('Følgende student er registrert: $fornavn $etternavn');</script>";
-        } else {
-            if (mysqli_errno($db) == 1062) {
+        if (!mysqli_query($db, $sqlSetning)) {
+            if (mysqli_errno($db) == 1062) { // Duplicate
                 echo "<script>alert('Feil: Brukernavnet $brukernavn finnes allerede.');</script>";
             } else {
                 echo "<script>alert('Feil under registrering: " . mysqli_error($db) . "');</script>";
             }
+        } else {
+            echo "<script>alert('Følgende student er registrert: $fornavn $etternavn');</script>";
         }
     }
 }
