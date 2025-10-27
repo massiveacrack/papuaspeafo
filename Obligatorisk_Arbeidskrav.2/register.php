@@ -14,12 +14,12 @@ if (isset($_POST["velgUkedagKnapp"])) {
         $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
                        VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
         if (mysqli_query($db, $sqlSetning)) {
-            $klassemessage = "Følgende klasse er registrert: <strong>$klassekode</strong>";
+            echo "<script>alert('Følgende klasse er registrert: $klassekode');</script>";
         } else {
             if (mysqli_errno($db) == 1062) {
-                $klassemessage = "Feil: Klassen med kode <strong>$klassekode</strong> finnes allerede.";
+                echo "<script>alert('Feil: Klassen med kode $klassekode finnes allerede.');</script>";
             } else {
-                $klassemessage = "Feil under registrering: " . mysqli_error($db);
+                echo "<script>alert('Feil under registrering: " . mysqli_error($db) . "');</script>";
             }
         }
     }
@@ -34,12 +34,12 @@ if (isset($_POST["velgUkedagKnapp"])) {
         $sqlSetning = "INSERT INTO student (brukernavn, fornavn, etternavn, klassekode)
                        VALUES ('$brukernavn', '$fornavn', '$etternavn', '$klassekode')";
         if (mysqli_query($db, $sqlSetning)) {
-            $studentmessage = "Følgende student er registrert: <strong>$fornavn $etternavn</strong>";
+            echo "<script>alert('Følgende student er registrert: $fornavn $etternavn');</script>";
         } else {
             if (mysqli_errno($db) == 1062) {
-                $studentmessage = "Feil: Brukernavnet <strong>$brukernavn</strong> finnes allerede.";
+                echo "<script>alert('Feil: Brukernavnet $brukernavn finnes allerede.');</script>";
             } else {
-                $studentmessage = "Feil under registrering: " . mysqli_error($db);
+                echo "<script>alert('Feil under registrering: " . mysqli_error($db) . "');</script>";
             }
         }
     }
@@ -66,8 +66,6 @@ if (isset($_POST["velgUkedagKnapp"])) {
 <a href="index.html">Tilbake til meny</a>
 
 <h3>Registrer Ny Klasse</h3>
-<?php if ($klassemessage) echo "<p>$klassemessage</p>"; ?>
-
 <form method="post" action="">
     <input type="hidden" name="klasse">
     Klassekode: <input type="text" name="klassekode" required><br>
@@ -77,8 +75,6 @@ if (isset($_POST["velgUkedagKnapp"])) {
 </form>
 
 <h3>Registrer Ny Student</h3>
-<?php if ($studentmessage) echo "<p>$studentmessage</p>"; ?>
-
 <form method="post" action="">
     <input type="hidden" name="student">
     Brukernavn: <input type="text" name="brukernavn" required><br>
