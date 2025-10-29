@@ -1,4 +1,4 @@
-# --- sei_theta_analyzer.py ---
+# --- sei_theta_analyzer.py  ---
 import argparse, os, json, numpy as np, matplotlib.pyplot as plt
 
 def load_csv(path):
